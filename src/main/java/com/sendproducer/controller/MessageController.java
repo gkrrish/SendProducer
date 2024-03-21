@@ -20,7 +20,6 @@ public class MessageController {
 
 	@PostMapping("/send")
 	public String sendKafka(@RequestBody String message) {
-		System.out.println();
 		kafkaProducer.sendMessage(message);
 		return "Message sent to Kafka topic successfully!";
 	}
@@ -30,11 +29,6 @@ public class MessageController {
 		boolean isConnected = kafkaConnectionChecker.checkConnection();
 		return isConnected ? "Connection to Kafka is successful" : "Failed to connect to Kafka";
 
-	}
-
-	@GetMapping("/test")
-	public String test() {
-		return "hello";
 	}
 
 }
